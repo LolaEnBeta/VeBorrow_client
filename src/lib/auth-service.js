@@ -21,11 +21,15 @@ class Auth {
   }
 
   logout() {
-    return this.auth.post("/auth/logout", {}).then(({ data }) => data);
+    return this.auth
+      .post("/auth/logout", {})
+      .then(({ data }) => data);
   }
 
   me() {
-    return this.auth.get("/auth/me").then(({ data }) => data);
+    return this.auth
+      .get("/auth/me")
+      .then(({ data }) => data);
   }
 }
 

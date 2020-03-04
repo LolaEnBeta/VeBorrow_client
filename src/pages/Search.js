@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withAuth } from '../lib/Auth';
 
 class Search extends Component {
   render() {
@@ -10,4 +11,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withAuth(Search);
