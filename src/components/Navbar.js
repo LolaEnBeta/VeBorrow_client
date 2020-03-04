@@ -16,6 +16,7 @@ class Navbar extends Component {
             <p>username: {user.firstName}</p>
             <button onClick={logout}>Logout</button>
             <Link to="/my-profile">Profile</Link>
+            <Link to="/my-vehicles">Vehicles</Link>
           </>
         ) : (
           <>
