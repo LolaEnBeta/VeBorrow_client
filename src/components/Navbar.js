@@ -18,6 +18,7 @@ class Navbar extends Component {
             <Link to="/my-profile">Profile</Link>
             <Link to="/my-vehicles">Vehicles</Link>
             <Link to="/search">Search</Link>
+            <Link to="/notifications">Notifications</Link>
           </>
         ) : (
           <>
