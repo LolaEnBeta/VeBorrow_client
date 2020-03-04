@@ -17,6 +17,7 @@ class Navbar extends Component {
             <button onClick={logout}>Logout</button>
             <Link to="/my-profile">Profile</Link>
             <Link to="/my-vehicles">Vehicles</Link>
+            <Link to="/search">Search</Link>
           </>
         ) : (
           <>
