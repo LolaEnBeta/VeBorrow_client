@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withAuth } from "./../lib/Auth";
-import axios from 'axios';
 import userService from './../lib/user-service';
 
 class Profile extends Component {

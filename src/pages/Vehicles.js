@@ -19,11 +19,17 @@ class Vehicles extends Component {
       })
   }
 
+  deleteVehicle = (vehicleId) => {
+    vehicleService.deleteOneVehicle(vehicleId)
+      .then((data) => console.log(data))
+      .catch( (err) => console.log(err))
+  }
+
   render() {
     return (
       <div>
         {this.state.vehicles.map((vehicle) => {
-          return <Vehicle vehicle={vehicle} />
+          return <Vehicle vehicle={vehicle} delete={this.deleteVehicle}/>
         })}
 
         <Link to="/create-vehicle" > Create one </Link>

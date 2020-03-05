@@ -4,9 +4,7 @@ import vehicleService from './../lib/vehicle-service';
 export default class Vehicle extends Component {
 
   deleteVehicle = () => {
-    vehicleService.deleteOneVehicle(this.props.vehicle._id)
-      .then((data) => console.log(data))
-      .catch( (err) => console.log(err))
+    this.props.delete(this.props.vehicle._id);
   }
 
   render() {
