@@ -22,9 +22,9 @@ class CreateVehicleForm extends Component {
   }
 
   handleChange = (e) => {
-    const {name, value} = e.target;
+    const {value} = e.target;
 
-    this.setState({[name]: value});
+    this.setState({type: value});
   }
 
   render() {
@@ -32,7 +32,13 @@ class CreateVehicleForm extends Component {
       <div>
         <form onSubmit={this.createNewVehicle}>
           <label>Type</label>
-          <input type="text" name="type" value={this.state.type} onChange={this.handleChange}/>
+          <select name="type" value={this.state.type} onChange={this.handleChange}>
+            <option value="bike">Bike</option>
+            <option value="motorcycle">motorcycle</option>
+            <option value="car">car</option>
+            <option value="electric scooter">electric scooter</option>
+            <option value="scooter">scooter</option>
+          </select>
           <button type="submit">Add</button>
         </form>
       </div>
