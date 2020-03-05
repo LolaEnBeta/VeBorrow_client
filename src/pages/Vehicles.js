@@ -21,7 +21,14 @@ class Vehicles extends Component {
 
   deleteVehicle = (vehicleId) => {
     vehicleService.deleteOneVehicle(vehicleId)
-      .then((data) => console.log(data))
+      .then(() => {
+        vehicleService.getAllVehicles()
+          .then(res => {
+            const vehiclesList = res;
+
+            this.setState({vehicles: vehiclesList});
+          })
+      })
       .catch( (err) => console.log(err))
   }
 
