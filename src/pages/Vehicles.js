@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { withAuth } from '../lib/Auth';
 import Vehicle from '../components/Vehicle';
-import axios from 'axios';
 import vehicleService from './../lib/vehicle-service';
 
 

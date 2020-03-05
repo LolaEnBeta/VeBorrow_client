@@ -19,6 +19,12 @@ class Vehicle {
       .post('/', {type})
       .then(({data}) => data);
   }
+
+  deleteOneVehicle(vehicleId) {
+    return this.vehicles
+      .delete(`/${vehicleId}`)
+      .then(({data}) => data);
+  }
 }
 
 const vehicleService = new Vehicle();
