@@ -26,9 +26,9 @@ class Vehicle {
       .then(({data}) => data);
   }
 
-  updateVehicle(vehicleId, available) {
+  updateVehicle(vehicleId, available, latitude, longitude) {
     return this.vehicles
-      .put(`/${vehicleId}`, {available, latitude: "a", longitude: "b"})
+      .put(`/${vehicleId}`, {available, latitude, longitude})
       .then(({data}) => data);
   }
 }

@@ -16,8 +16,8 @@ class CreateVehicleForm extends Component {
 
     vehicleService.createVehicle(this.state.type)
       .then(res => {
-        console.log(res);
         this.setState({type: ""})
+        this.props.history.push('my-vehicles');
       })
   }
 
@@ -33,6 +33,7 @@ class CreateVehicleForm extends Component {
         <form onSubmit={this.createNewVehicle}>
           <label>Type</label>
           <select name="type" value={this.state.type} onChange={this.handleChange}>
+            <option selected value="">Select</option>
             <option value="bike">Bike</option>
             <option value="motorcycle">motorcycle</option>
             <option value="car">car</option>
