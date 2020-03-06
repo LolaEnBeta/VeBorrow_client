@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { withAuth } from "./../lib/Auth";
 import userService from './../lib/user-service';
+import authService from '../lib/auth-service';
 
 class Profile extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    phoneNumber: ""
+  }
+
+  componentDidMount() {
+    authService.me()
+      .then((user) => {
+        this.setState({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
+        })
+      })
+  }
+
   deleteAccount = () => {
     userService.deleteUser(this.props.user._id)
       .then( () => this.props.history.push('/home'))
@@ -13,18 +32,14 @@ class Profile extends Component {
     return (
       <div>
         <h1>PROFILE</h1>
-        <h1>USER {this.props.user.firstName} {this.props.user.secondName}</h1>
-        <p>PhoneNumber {this.props.user.phoneNumber}</p>
+        <h1>USER {this.state.firstName} {this.state.secondName}</h1>
+        <p>PhoneNumber {this.state.phoneNumber}</p>
         <p>ID {this.props.user._id}</p>
         <p>Email {this.props.user.email}</p>
         {this.props.user.owner && <p>Is owner</p>}
-        {this.props.user.vehicles.map((item) => {
-          console.log(item)
-          return <p>ItemsId {item.type}</p>
-        })}
-        <p>{this.props.user.borrow}</p>
 
-        <button onClick={this.editAccount}>Edit</button>
+        <Link to="/edit-profile" >Edit</Link>
+        <br></br>
         <button onClick={this.deleteAccount}>Delete</button>
       </div>
     )
