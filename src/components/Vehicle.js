@@ -21,7 +21,9 @@ export default class Vehicle extends Component {
   }
 
   turnOff = (vehicleId, newAvailableState) => {
-    vehicleService.updateVehicle(vehicleId, newAvailableState)
+    let latitude = null;
+    let longitude = null;
+    vehicleService.updateVehicle(vehicleId, newAvailableState, latitude, longitude)
       .then((vehicle) => {
         this.setState({
           available: vehicle.available,
@@ -33,15 +35,24 @@ export default class Vehicle extends Component {
   }
 
   turnAvailable = (vehicleId, newAvailableState) => {
-    vehicleService.updateVehicle(vehicleId, newAvailableState)
-        .then((vehicle) => {
-          this.setState({
-            available: vehicle.available,
-            longitude: vehicle.longitude,
-            latitude: vehicle.latitude
-          });
-        })
-        .catch((error) => console.log(error))
+    let latitude = "";
+    let longitude = "";
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+
+      vehicleService.updateVehicle(vehicleId, newAvailableState, latitude, longitude)
+          .then((vehicle) => {
+            this.setState({
+              available: vehicle.available,
+              longitude: vehicle.longitude,
+              latitude: vehicle.latitude
+            });
+          })
+          .catch((error) => console.log(error))
+     });
+
   }
 
   updateState = (e) => {
