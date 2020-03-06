@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import vehicleService from './../lib/vehicle-service';
 
 export default class Vehicle extends Component {
+  state = {
+    available: "",
+    longitude: "",
+    latitude: ""
+  }
+
+  componentDidMount() {
+    this.setState({
+      available: this.props.vehicle.available,
+      longitude: this.props.vehicle.longitude,
+      latitude: this.props.vehicle.latitude
+    })
+  }
 
   deleteVehicle = () => {
     this.props.delete(this.props.vehicle._id);
