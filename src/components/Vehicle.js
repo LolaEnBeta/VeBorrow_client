@@ -20,6 +20,41 @@ export default class Vehicle extends Component {
     this.props.delete(this.props.vehicle._id);
   }
 
+  turnOff = (vehicleId, newAvailableState) => {
+    vehicleService.updateVehicle(vehicleId, newAvailableState)
+      .then((vehicle) => {
+        this.setState({
+          available: vehicle.available,
+          longitude: vehicle.longitude,
+          latitude: vehicle.latitude
+        });
+      })
+      .catch((error) => console.log(error))
+  }
+
+  turnAvailable = (vehicleId, newAvailableState) => {
+    vehicleService.updateVehicle(vehicleId, newAvailableState)
+        .then((vehicle) => {
+          this.setState({
+            available: vehicle.available,
+            longitude: vehicle.longitude,
+            latitude: vehicle.latitude
+          });
+        })
+        .catch((error) => console.log(error))
+  }
+
+  updateState = (e) => {
+    e.preventDefault();
+
+    const vehicleId = this.props.vehicle._id;
+    const isAvailable = this.props.vehicle.available;
+    const newAvailableState = !this.props.vehicle.available;
+
+    if (isAvailable) { this.turnOff(vehicleId, newAvailableState) }
+    else { this.turnAvailable(vehicleId, newAvailableState) }
+  }
+
   render() {
     return (
       <div className="col-sm-6">
