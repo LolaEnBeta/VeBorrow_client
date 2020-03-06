@@ -11,6 +11,15 @@ class EditProfileForm extends Component {
     phoneNumber: ""
   }
 
+  componentDidMount() {
+    authService.me()
+      .then((user) => {
+        const {firstName, lastName, phoneNumber} = user;
+        this.setState({firstName, lastName, phoneNumber});
+      })
+      .catch((error) => console.log(error));
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
 
