@@ -25,6 +25,12 @@ class Vehicle {
       .delete(`/${vehicleId}`)
       .then(({data}) => data);
   }
+
+  updateVehicle(vehicleId, available) {
+    return this.vehicles
+      .put(`/${vehicleId}`, {available, latitude: "a", longitude: "b"})
+      .then(({data}) => data);
+  }
 }
 
 const vehicleService = new Vehicle();
