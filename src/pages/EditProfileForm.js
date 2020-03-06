@@ -3,6 +3,17 @@ import { withAuth } from "./../lib/Auth";
 import userService from './../lib/user-service';
 
 class EditProfileForm extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    phoneNumber: ""
+  }
+
+  handleChange = (e) => {
+    const {name, value} = e.target;
+    this.setState({[name]: value});
+  }
+
   render() {
     return (
       <div>
