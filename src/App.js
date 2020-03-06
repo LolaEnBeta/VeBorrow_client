@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
 import Profile from "./pages/Profile";
+import EditProfileForm from "./pages/EditProfileForm";
 import Vehicles from "./pages/Vehicles";
 import Search from "./pages/Search";
 import Notifications from "./pages/Notifications";
@@ -30,6 +31,7 @@ class App extends Component {
 
           <PrivateRoute exact path="/private" component={Private} />
           <PrivateRoute exact path="/my-profile" component={Profile} />
+          <PrivateRoute exact path="/edit-profile" component={EditProfileForm} />
           <PrivateRoute exact path="/my-vehicles" component={Vehicles} />
           <PrivateRoute exact path="/create-vehicle" component={CreateVehicleForm} />
           <PrivateRoute exact path="/search" component={Search} />
