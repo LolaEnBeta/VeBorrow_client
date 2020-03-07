@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-
-const BASE_URL = process.env.API_KEY_MAPS;
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import vehicleService from './../lib/vehicle-service';
 
 const mapStyles = {
   width: '100%',
@@ -9,6 +8,26 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
+  state = {
+    latitude:  41.4304006,
+    longitude: 2.1941694,
+    availableVehicles: []
+  }
+
+  componentDidMount() {
+    this.showAllAvailableVehicles();
+  }
+
+  showAllAvailableVehicles = () => {
+    vehicleService.getAllAvailableVehicles()
+      .then( (vehiclesArr) => {
+
+        this.setState({availableVehicles: vehiclesArr});
+        console.log(vehiclesArr);
+      })
+      .catch( (err) => console.log(err));
+  }
+
   render() {
     return (
       <Map
@@ -16,14 +35,19 @@ export class MapContainer extends Component {
         zoom={16}
         style={mapStyles}
         initialCenter={{
-         lat: 41.390356499999996,
-         lng: 2.1941694
+         lat: this.state.latitude,
+         lng: this.state.longitude
         }}
-      />
+      >
+        {this.state.availableVehicles.map((vehicle) => {
+          return <Marker key={vehicle._id} position={{lat: Number(vehicle.latitude), lng: Number(vehicle.longitude)}} />
+        })}
+
+      </Map>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: BASE_URL
+  apiKey: process.env.REACT_APP_API_KEY_MAPS
 })(MapContainer);
