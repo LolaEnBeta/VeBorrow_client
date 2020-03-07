@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { withAuth } from '../lib/Auth';
 import MapContainer from '../components/MapContainer';
 import vehicleService from './../lib/vehicle-service';
+import borrowService from './../lib/borrow-service';
 import VehicleInfo from '../components/VehicleInfo';
 
 class Search extends Component {
   state = {
     showInfo: false,
     type: "",
+    vehicleId: "",
     ownerName: "",
+    ownerId: ""
 
   }
 
@@ -18,7 +21,9 @@ class Search extends Component {
         this.setState({
           showInfo: true,
           type: vehicle.type,
-          ownerName: vehicle.ownerId["firstName"]
+          vehicleId: vehicle._id,
+          ownerName: vehicle.ownerId["firstName"],
+          ownerId: vehicle.ownerId["_id"]
         });
       })
       .catch( (err) => console.log(err));
@@ -29,7 +34,16 @@ class Search extends Component {
   }
 
   borrowTheVehicle = () => {
-    console.log("You can borrow");
+    const ownerId = this.state.ownerId;
+    const vehicleId = this.state.vehicleId;
+    const message = "hola";
+
+    borrowService.create(ownerId, vehicleId, message)
+      .then( (borrow) => {
+        console.log("You borrow it! Congrats!!");
+        this.props.history.push('/notifications');
+      })
+      .catch( (err) => console.log(err));
   }
 
   render() {
