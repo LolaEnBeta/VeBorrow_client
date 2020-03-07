@@ -21,9 +21,7 @@ export class MapContainer extends Component {
   showAllAvailableVehicles = () => {
     vehicleService.getAllAvailableVehicles()
       .then( (vehiclesArr) => {
-
         this.setState({availableVehicles: vehiclesArr});
-        console.log(vehiclesArr);
       })
       .catch( (err) => console.log(err));
   }
