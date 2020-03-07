@@ -14,6 +14,18 @@ class VehicleInfo extends Component {
     })
   }
 
+  hideInfo = (e) => {
+    e.preventDefault();
+
+    this.props.hide();
+  }
+
+  borrowIt = (e) => {
+    e.preventDefault();
+
+    this.props.borrow();
+  }
+
   render() {
     return (
       <div>
