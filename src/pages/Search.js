@@ -24,6 +24,14 @@ class Search extends Component {
       .catch( (err) => console.log(err));
   }
 
+  hideInfo = () => {
+    this.setState({showInfo: false});
+  }
+
+  borrowTheVehicle = () => {
+    console.log("You can borrow");
+  }
+
   render() {
     return (
       <div>
