@@ -11,7 +11,7 @@ class Vehicles extends Component {
   }
 
   componentDidMount() {
-    vehicleService.getAllVehicles()
+    vehicleService.getAllUserVehicles()
       .then(res => {
         const vehiclesList = res;
 
@@ -22,7 +22,7 @@ class Vehicles extends Component {
   deleteVehicle = (vehicleId) => {
     vehicleService.deleteOneVehicle(vehicleId)
       .then(() => {
-        vehicleService.getAllVehicles()
+        vehicleService.getAllUserVehicles()
           .then(res => {
             const vehiclesList = res;
 

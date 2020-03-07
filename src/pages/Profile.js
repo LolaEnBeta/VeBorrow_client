@@ -37,6 +37,7 @@ class Profile extends Component {
         <p>ID {this.props.user._id}</p>
         <p>Email {this.props.user.email}</p>
         {this.props.user.owner && <p>Is owner</p>}
+        {!this.props.user.owner && <p>Is not owner</p>}
 
         <Link to="/edit-profile" >Edit</Link>
         <br></br>

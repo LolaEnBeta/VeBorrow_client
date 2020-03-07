@@ -17,7 +17,7 @@ class CreateVehicleForm extends Component {
     vehicleService.createVehicle(this.state.type)
       .then(res => {
         this.setState({type: ""})
-        this.props.history.push('my-vehicles');
+        this.props.history.push('/my-vehicles');
       })
   }
 

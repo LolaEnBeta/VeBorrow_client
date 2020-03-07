@@ -8,9 +8,15 @@ class Vehicle {
     });
   }
 
-  getAllVehicles() {
+  getAllUserVehicles() {
     return this.vehicles
       .get()
+      .then(({ data }) => data);
+  }
+
+  getAllAvailableVehicles() {
+    return this.vehicles
+      .get('/available')
       .then(({ data }) => data);
   }
 
