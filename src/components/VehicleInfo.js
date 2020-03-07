@@ -2,6 +2,18 @@ import React, { Component } from 'react'
 import { withAuth } from '../lib/Auth'
 
 class VehicleInfo extends Component {
+  state = {
+    type: "",
+    ownerName: ""
+  }
+
+  componentDidMount() {
+    this.setState({
+      type: this.props.vehicle.type,
+      ownerName: this.props.vehicle.ownerName
+    })
+  }
+
   render() {
     return (
       <div>
