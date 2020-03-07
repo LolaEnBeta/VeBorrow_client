@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../lib/Auth';
 import MapContainer from '../components/MapContainer';
 import vehicleService from './../lib/vehicle-service';
+import VehicleInfo from '../components/VehicleInfo';
 
 class Search extends Component {
   state = {
@@ -19,7 +20,6 @@ class Search extends Component {
           type: vehicle.type,
           ownerName: vehicle.ownerId["firstName"]
         });
-
       })
       .catch( (err) => console.log(err));
   }
@@ -33,10 +33,9 @@ class Search extends Component {
           this.state.showInfo
           &&
           <div>
-            <h3>INFO HERE!!!</h3>
-            <p>{this.state.type}</p>
-            <p>{this.state.ownerName}</p>
-            <p>FIN</p>
+            <VehicleInfo  vehicle={{type: this.state.type, ownerName: this.state.ownerName}}
+                          hide={this.hideInfo}
+                          borrow={this.borrowTheVehicle} />
           </div>
         }
 
