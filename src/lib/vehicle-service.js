@@ -37,6 +37,12 @@ class Vehicle {
       .put(`/${vehicleId}`, {available, latitude, longitude})
       .then(({data}) => data);
   }
+
+  getOne(vehicleId) {
+    return this.vehicles
+      .get(`/${vehicleId}`)
+      .then(({data}) => data);
+  }
 }
 
 const vehicleService = new Vehicle();
