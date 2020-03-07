@@ -28,6 +28,10 @@ export class MapContainer extends Component {
       .catch( (err) => console.log(err));
   }
 
+  showVehicleInfo = (vehicleId) => {
+    this.props.info(vehicleId);
+  }
+
   render() {
     return (
       <Map
@@ -40,7 +44,9 @@ export class MapContainer extends Component {
         }}
       >
         {this.state.availableVehicles.map((vehicle) => {
-          return <Marker key={vehicle._id} position={{lat: Number(vehicle.latitude), lng: Number(vehicle.longitude)}} />
+          return <Marker  key={vehicle._id}
+                          position={{lat: Number(vehicle.latitude), lng: Number(vehicle.longitude)}}
+                          onClick={() => this.showVehicleInfo(vehicle._id)} />
         })}
 
       </Map>
