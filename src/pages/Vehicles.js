@@ -36,7 +36,7 @@ class Vehicles extends Component {
     return (
       <div>
         {this.state.vehicles.map((vehicle) => {
-          return <Vehicle vehicle={vehicle} delete={this.deleteVehicle}/>
+          return <Vehicle key={vehicle._id} vehicle={vehicle} delete={this.deleteVehicle}/>
         })}
 
         <Link to="/create-vehicle" > Create one </Link>

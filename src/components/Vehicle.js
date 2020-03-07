@@ -59,8 +59,8 @@ export default class Vehicle extends Component {
     e.preventDefault();
 
     const vehicleId = this.props.vehicle._id;
-    const isAvailable = this.props.vehicle.available;
-    const newAvailableState = !this.props.vehicle.available;
+    const isAvailable = this.state.available;
+    const newAvailableState = !this.state.available;
 
     if (isAvailable) { this.turnOff(vehicleId, newAvailableState) }
     else { this.turnAvailable(vehicleId, newAvailableState) }
@@ -73,9 +73,9 @@ export default class Vehicle extends Component {
           <div className="card-body">
             <h5 className="card-title">{this.props.vehicle.type}</h5>
             <p className="card-text">...</p>
-            {!this.props.vehicle.available && <button className="btn btn-primary" onClick={this.updateState}>Set available</button>}
+            {!this.state.available && <button className="btn btn-primary" onClick={this.updateState}>Set available</button>}
 
-            {this.props.vehicle.available && <button className="btn btn-primary" onClick={this.updateState}>Turn off</button>}
+            {this.state.available && <button className="btn btn-primary" onClick={this.updateState}>Turn off</button>}
 
             <button className="btn btn-danger" onClick={this.deleteVehicle}>Delete</button>
           </div>
