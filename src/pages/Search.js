@@ -11,6 +11,19 @@ class Search extends Component {
 
   }
 
+  showInfo = (vehicleId) => {
+    vehicleService.getOne(vehicleId)
+      .then( (vehicle) => {
+        this.setState({
+          showInfo: true,
+          type: vehicle.type,
+          ownerName: vehicle.ownerId["firstName"]
+        });
+
+      })
+      .catch( (err) => console.log(err));
+  }
+
   render() {
     return (
       <div>
