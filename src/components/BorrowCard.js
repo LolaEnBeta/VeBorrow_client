@@ -12,11 +12,18 @@ class BorrowCard extends Component {
 
   componentDidMount() {
     this.checkIfIsOwner();
+    this.checkIfIsAccepted();
   }
 
   checkIfIsOwner = () => {
     if (this.props.borrow.ownerId["_id"] === this.props.user._id) {
       this.setState({isOwner: true})
+    }
+  }
+
+  checkIfIsAccepted = () => {
+    if (this.props.borrow.accepted) {
+      this.setState({accepted: true})
     }
   }
 
