@@ -22,8 +22,14 @@ class Borrow {
 
   returnVehicle(borrowId) {
     return this.borrows
-      .put(`/${borrowId}`)
+      .put(`/completed/${borrowId}`)
       .then(({data}) => data)
+  }
+
+  acceptBorrow(borrowId) {
+    return this.borrows
+      .put(`/accepted/${borrowId}`)
+      .then(({data}) => data);
   }
 }
 
