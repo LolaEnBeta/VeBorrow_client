@@ -29,7 +29,7 @@ class Notifications extends Component {
       <div>
         <h1>Notifications</h1>
           {this.state.borrows.map((borrow) => {
-            return <BorrowCard key={borrow._id} borrow={borrow} refreshPage= {this.refresh}/>
+            return <BorrowCard key={borrow._id} borrow={borrow} refreshPage={this.refresh}/>
           })}
       </div>
     )

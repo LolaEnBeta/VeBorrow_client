@@ -3,6 +3,13 @@ import { withAuth } from '../lib/Auth';
 import borrowService from './../lib/borrow-service';
 
 class BorrowCard extends Component {
+  state = {
+    owner: false,
+    accepted: false,
+    rejected: false,
+    completed: false
+  }
+
   completeBorrow = (e) => {
     e.preventDefault();
 
@@ -15,11 +22,88 @@ class BorrowCard extends Component {
   render() {
     return (
       <div>
-        <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
-        <p>Message: {this.props.borrow.message}</p>
-        <p>Owner name: {this.props.borrow.ownerId["firstName"]}</p>
-        {!this.props.borrow.completed && <button onClick={this.completeBorrow}>Return it</button>}
-        {this.props.borrow.completed && <p>Finished!</p>}
+        {
+          this.state.owner &&
+          <div>
+            <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
+            <p>Renter name: {this.props.borrow.renterId["firstName"]}</p>
+            <p>Message: {this.props.borrow.message}</p>
+            {
+              <div>
+                {
+                  !this.state.accepted &&
+                  <div>
+                    {
+                      this.state.rejected &&
+                      <p>Rejected</p>
+                    }
+                    {
+                      !this.state.rejected &&
+                      <div>
+                        <button>Accept</button>
+                        <button>Reject</button>
+                      </div>
+                    }
+                  </div>
+                }
+                {
+                  this.state.accepted &&
+                  <div>
+                    {
+                      !this.state.completed &&
+                      <p>In use...</p>
+                    }
+                    {
+                      this.state.completed &&
+                      <p>Finished!!</p>
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        {
+          !this.state.owner &&
+          <div>
+            <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
+            <p>Owner name: {this.props.borrow.ownerId["firstName"]}</p>
+            <p>Your message: {this.props.borrow.message}</p>
+            {
+              <div>
+                {
+                  !this.state.accepted &&
+                  <div>
+                    {
+                      this.state.rejected &&
+                      <p>Rejected</p>
+                    }
+                    {
+                      !this.state.rejected &&
+                      <div>
+                        <p>Pending...</p>
+                      </div>
+                    }
+                  </div>
+                }
+                {
+                  this.state.accepted &&
+                  <div>
+                    {
+                      !this.state.completed &&
+                      <button>Return</button>
+                    }
+                    {
+                      this.state.completed &&
+                      <p>Finished!!</p>
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
       </div>
     )
   }
