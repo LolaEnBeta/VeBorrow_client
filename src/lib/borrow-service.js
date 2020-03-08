@@ -19,6 +19,12 @@ class Borrow {
       .get()
       .then(({data}) => data);
   }
+
+  returnVehicle(borrowId) {
+    return this.borrows
+      .put(`/${borrowId}`)
+      .then(({data}) => data)
+  }
 }
 
 const borrowService = new Borrow();
