@@ -16,12 +16,20 @@ class Notifications extends Component {
       .catch( (err) => console.log(err));
   }
 
+  refresh = () => {
+    borrowService.get()
+      .then( (borrows) => {
+        this.setState({ borrows })
+      })
+      .catch( (err) => console.log(err));
+  }
+
   render() {
     return (
       <div>
         <h1>Notifications</h1>
           {this.state.borrows.map((borrow) => {
-            return <BorrowCard key={borrow._id} borrow={borrow} />
+            return <BorrowCard key={borrow._id} borrow={borrow} refreshPage= {this.refresh}/>
           })}
       </div>
     )
