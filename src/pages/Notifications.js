@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/Auth';
 import borrowService from './../lib/borrow-service';
+import BorrowCard from '../components/BorrowCard';
 
 class Notifications extends Component {
   state = {
@@ -9,8 +10,8 @@ class Notifications extends Component {
 
   componentDidMount() {
     borrowService.get()
-      .then( (borrowList) => {
-        this.setState({ borrows: borrowList })
+      .then( (borrows) => {
+        this.setState({ borrows })
       })
       .catch( (err) => console.log(err));
   }
@@ -19,17 +20,8 @@ class Notifications extends Component {
     return (
       <div>
         <h1>Notifications</h1>
-          {this.state.borrows.map((borrow, i) => {
-            console.log(borrow)
-            return(
-              <div key={borrow._id}>
-                <h3>Type: {borrow.vehicleId['type']}</h3>
-                <p>Message: {borrow.message}</p>
-                <p>Owner name: {borrow.ownerId["firstName"]}</p>
-                {!borrow.completed && <button>Return it</button>}
-                {borrow.completed && <p>Finished!</p>}
-              </div>
-            )
+          {this.state.borrows.map((borrow) => {
+            return <BorrowCard key={borrow._id} borrow={borrow} />
           })}
       </div>
     )
