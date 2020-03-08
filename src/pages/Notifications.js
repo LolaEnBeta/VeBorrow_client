@@ -9,11 +9,7 @@ class Notifications extends Component {
   }
 
   componentDidMount() {
-    borrowService.get()
-      .then( (borrows) => {
-        this.setState({ borrows })
-      })
-      .catch( (err) => console.log(err));
+    this.refresh();
   }
 
   refresh = () => {

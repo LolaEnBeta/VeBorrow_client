@@ -3,44 +3,6 @@ import { withAuth } from '../lib/Auth';
 import borrowService from './../lib/borrow-service';
 
 class BorrowCard extends Component {
-  state = {
-    isOwner: false,
-    accepted: false,
-    rejected: false,
-    completed: false
-  }
-
-  componentDidMount() {
-    this.checkIfIsOwner();
-    this.checkIfIsAccepted();
-    this.checkIfIsRejected();
-    this.checkIfIsCompleted();
-  }
-
-  checkIfIsOwner = () => {
-    if (this.props.borrow.ownerId["_id"] === this.props.user._id) {
-      this.setState({isOwner: true})
-    }
-  }
-
-  checkIfIsAccepted = () => {
-    if (this.props.borrow.accepted) {
-      this.setState({accepted: true})
-    }
-  }
-
-  checkIfIsRejected = () => {
-    if (this.props.borrow.rejected) {
-      this.setState({rejected: true})
-    }
-  }
-
-  checkIfIsCompleted = () => {
-    if (this.props.borrow.completed) {
-      this.setState({completed: true})
-    }
-  }
-
   acceptBorrow = (e) => {
     e.preventDefault();
 
@@ -72,7 +34,7 @@ class BorrowCard extends Component {
     return (
       <div>
         {
-          this.state.isOwner &&
+          this.props.borrow.ownerId["_id"] === this.props.user._id &&
           <div>
             <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
             <p>Renter name: {this.props.borrow.renterId["firstName"]}</p>
@@ -80,14 +42,14 @@ class BorrowCard extends Component {
             {
               <div>
                 {
-                  !this.state.accepted &&
+                  !this.props.borrow.accepted &&
                   <div>
                     {
-                      this.state.rejected &&
+                      this.props.borrow.rejected &&
                       <p>Rejected</p>
                     }
                     {
-                      !this.state.rejected &&
+                      !this.props.borrow.rejected &&
                       <div>
                         <button onClick={this.acceptBorrow}>Accept</button>
                         <button onClick={this.rejectBorrow}>Reject</button>
@@ -96,14 +58,14 @@ class BorrowCard extends Component {
                   </div>
                 }
                 {
-                  this.state.accepted &&
+                  this.props.borrow.accepted &&
                   <div>
                     {
-                      !this.state.completed &&
+                      !this.props.borrow.completed &&
                       <p>In use...</p>
                     }
                     {
-                      this.state.completed &&
+                      this.props.borrow.completed &&
                       <p>Finished!!</p>
                     }
                   </div>
@@ -114,7 +76,7 @@ class BorrowCard extends Component {
         }
 
         {
-          !this.state.isOwner &&
+          !this.props.borrow.ownerId["_id"] === this.props.user._id &&
           <div>
             <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
             <p>Owner name: {this.props.borrow.ownerId["firstName"]}</p>
@@ -122,14 +84,14 @@ class BorrowCard extends Component {
             {
               <div>
                 {
-                  !this.state.accepted &&
+                  !this.props.borrow.accepted &&
                   <div>
                     {
-                      this.state.rejected &&
+                      this.props.borrow.rejected &&
                       <p>Rejected</p>
                     }
                     {
-                      !this.state.rejected &&
+                      !this.props.borrow.rejected &&
                       <div>
                         <p>Pending...</p>
                       </div>
@@ -137,14 +99,14 @@ class BorrowCard extends Component {
                   </div>
                 }
                 {
-                  this.state.accepted &&
+                  this.props.borrow.accepted &&
                   <div>
                     {
-                      !this.state.completed &&
+                      !this.props.borrow.completed &&
                       <button onClick={this.completeBorrow}>Return</button>
                     }
                     {
-                      this.state.completed &&
+                      this.props.borrow.completed &&
                       <p>Finished!!</p>
                     }
                   </div>
