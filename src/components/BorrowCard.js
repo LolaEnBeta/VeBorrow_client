@@ -4,10 +4,20 @@ import borrowService from './../lib/borrow-service';
 
 class BorrowCard extends Component {
   state = {
-    owner: false,
+    isOwner: false,
     accepted: false,
     rejected: false,
     completed: false
+  }
+
+  componentDidMount() {
+    this.checkIfIsOwner();
+  }
+
+  checkIfIsOwner = () => {
+    if (this.props.borrow.ownerId["_id"] === this.props.user._id) {
+      this.setState({isOwner: true})
+    }
   }
 
   completeBorrow = (e) => {
@@ -23,7 +33,7 @@ class BorrowCard extends Component {
     return (
       <div>
         {
-          this.state.owner &&
+          this.state.isOwner &&
           <div>
             <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
             <p>Renter name: {this.props.borrow.renterId["firstName"]}</p>
@@ -65,7 +75,7 @@ class BorrowCard extends Component {
         }
 
         {
-          !this.state.owner &&
+          !this.state.isOwner &&
           <div>
             <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
             <p>Owner name: {this.props.borrow.ownerId["firstName"]}</p>
