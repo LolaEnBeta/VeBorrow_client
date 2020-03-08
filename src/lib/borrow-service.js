@@ -31,6 +31,12 @@ class Borrow {
       .put(`/accepted/${borrowId}`)
       .then(({data}) => data);
   }
+
+  rejectBorrow(borrowId) {
+    return this.borrows
+      .put(`/rejected/${borrowId}`)
+      .then(({data}) => data);
+  }
 }
 
 const borrowService = new Borrow();
