@@ -33,14 +33,12 @@ class Search extends Component {
     this.setState({showInfo: false});
   }
 
-  borrowTheVehicle = () => {
+  borrowTheVehicle = (message) => {
     const ownerId = this.state.ownerId;
     const vehicleId = this.state.vehicleId;
-    const message = "hola";
 
     borrowService.create(ownerId, vehicleId, message)
-      .then( (borrow) => {
-        console.log("You borrow it! Congrats!!");
+      .then( () => {
         this.props.history.push('/notifications');
       })
       .catch( (err) => console.log(err));
