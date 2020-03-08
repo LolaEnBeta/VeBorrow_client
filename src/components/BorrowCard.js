@@ -14,6 +14,7 @@ class BorrowCard extends Component {
     this.checkIfIsOwner();
     this.checkIfIsAccepted();
     this.checkIfIsRejected();
+    this.checkIfIsCompleted();
   }
 
   checkIfIsOwner = () => {
@@ -31,6 +32,12 @@ class BorrowCard extends Component {
   checkIfIsRejected = () => {
     if (this.props.borrow.rejected) {
       this.setState({rejected: true})
+    }
+  }
+
+  checkIfIsCompleted = () => {
+    if (this.props.borrow.completed) {
+      this.setState({completed: true})
     }
   }
 
