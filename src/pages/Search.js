@@ -53,7 +53,7 @@ class Search extends Component {
           this.state.showInfo
           &&
           <div>
-            <VehicleInfo  vehicle={{type: this.state.type, ownerName: this.state.ownerName}}
+            <VehicleInfo  vehicle={{type: this.state.type, ownerName: this.state.ownerName, ownerId: this.state.ownerId}}
                           hide={this.hideInfo}
                           borrow={this.borrowTheVehicle} />
           </div>

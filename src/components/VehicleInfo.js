@@ -13,7 +13,7 @@ class VehicleInfo extends Component {
     this.setState({
       type: this.props.vehicle.type,
       ownerName: this.props.vehicle.ownerName
-    })
+    });
   }
 
   hideInfo = (e) => {
@@ -44,27 +44,35 @@ class VehicleInfo extends Component {
   render() {
     return (
       <div>
-        <h3>INFO HERE!!!</h3>
-          <p>Type of vehicle: {this.state.type}</p>
-          <p>Owner: {this.state.ownerName}</p>
-          {
-            this.state.showMessageForm &&
+        {
+          this.props.vehicle.ownerId === this.props.user._id ?
+          (
             <div>
-              <label>How many time you need it mor or less?</label>
-              <input type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
+              <h3>Your vehicle</h3>
+              <p>Type of vehicle: {this.state.type}</p>
             </div>
-          }
-
-          {
-            !this.state.showMessageForm &&
-            <button onClick={this.completeForm}>Borrow</button>
-          }
-
-          {
-            this.state.showMessageForm &&
-            <button onClick={this.borrowIt}>Accept</button>
-          }
-          <button onClick={this.hideInfo}>Close info</button>
+          ) : (
+            <div>
+              <h3>Vehicle info</h3>
+                <p>Type of vehicle: {this.state.type}</p>
+                <p>Owner: {this.state.ownerName}</p>
+                {
+                  this.state.showMessageForm ?
+                  (
+                    <div>
+                      <label>How many time you need it mor or less?</label>
+                      <input type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
+                      <br></br>
+                      <button onClick={this.borrowIt}>Accept</button>
+                    </div>
+                  ) : (
+                    <button onClick={this.completeForm}>Borrow</button>
+                  )
+                }
+            </div>
+          )
+        }
+        <button onClick={this.hideInfo}>Close info</button>
       </div>
     )
   }
