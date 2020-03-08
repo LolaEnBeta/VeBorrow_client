@@ -141,7 +141,7 @@ class BorrowCard extends Component {
                   <div>
                     {
                       !this.state.completed &&
-                      <button>Return</button>
+                      <button onClick={this.completeBorrow}>Return</button>
                     }
                     {
                       this.state.completed &&
