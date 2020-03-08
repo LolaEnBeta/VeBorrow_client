@@ -13,6 +13,12 @@ class Borrow {
       .post('/', {ownerId, vehicleId, message})
       .then(({ data }) => data);
   }
+
+  get() {
+    return this.borrows
+      .get()
+      .then(({data}) => data);
+  }
 }
 
 const borrowService = new Borrow();
