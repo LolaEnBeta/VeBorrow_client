@@ -50,6 +50,15 @@ class BorrowCard extends Component {
       .catch( (err) => console.log(err));
   }
 
+  rejectBorrow = (e) => {
+    e.preventDefault();
+
+    const borrowId = this.props.borrow._id;
+    borrowService.rejectBorrow(borrowId)
+      .then( () => this.props.refreshPage())
+      .catch( (err) => console.log(err));
+  }
+
   completeBorrow = (e) => {
     e.preventDefault();
 
@@ -81,7 +90,7 @@ class BorrowCard extends Component {
                       !this.state.rejected &&
                       <div>
                         <button onClick={this.acceptBorrow}>Accept</button>
-                        <button>Reject</button>
+                        <button onClick={this.rejectBorrow}>Reject</button>
                       </div>
                     }
                   </div>
