@@ -25,9 +25,17 @@ class BorrowCard extends Component {
     const borrowId = this.props.borrow._id;
     const vehicleId = this.props.borrow.vehicleId["_id"];
 
-    borrowService.returnVehicle(borrowId, vehicleId)
+    let latitude = "";
+    let longitude = "";
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+
+      borrowService.returnVehicle(borrowId, vehicleId, latitude, longitude)
       .then( () => this.props.refreshPage())
       .catch( (err) => console.log(err));
+     });
   }
 
   render() {
