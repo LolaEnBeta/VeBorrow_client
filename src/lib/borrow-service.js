@@ -20,15 +20,15 @@ class Borrow {
       .then(({data}) => data);
   }
 
-  returnVehicle(borrowId) {
+  returnVehicle(borrowId, vehicleId) {
     return this.borrows
-      .put(`/completed/${borrowId}`)
+      .put(`/completed/${borrowId}`, { vehicleId })
       .then(({data}) => data)
   }
 
-  acceptBorrow(borrowId) {
+  acceptBorrow(borrowId, vehicleId) {
     return this.borrows
-      .put(`/accepted/${borrowId}`)
+      .put(`/accepted/${borrowId}`, { vehicleId })
       .then(({data}) => data);
   }
 

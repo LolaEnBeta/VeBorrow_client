@@ -7,7 +7,9 @@ import IsRenterNotification from './IsRenterNotification';
 class BorrowCard extends Component {
   acceptBorrow = () => {
     const borrowId = this.props.borrow._id;
-    borrowService.acceptBorrow(borrowId)
+    const vehicleId = this.props.borrow.vehicleId["_id"];
+
+    borrowService.acceptBorrow(borrowId, vehicleId)
       .then( () => this.props.refreshPage())
       .catch( (err) => console.log(err));
   }
@@ -21,7 +23,9 @@ class BorrowCard extends Component {
 
   completeBorrow = () => {
     const borrowId = this.props.borrow._id;
-    borrowService.returnVehicle(borrowId)
+    const vehicleId = this.props.borrow.vehicleId["_id"];
+
+    borrowService.returnVehicle(borrowId, vehicleId)
       .then( () => this.props.refreshPage())
       .catch( (err) => console.log(err));
   }
