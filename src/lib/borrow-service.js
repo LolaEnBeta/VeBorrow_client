@@ -20,9 +20,9 @@ class Borrow {
       .then(({data}) => data);
   }
 
-  returnVehicle(borrowId, vehicleId) {
+  returnVehicle(borrowId, vehicleId, latitude, longitude) {
     return this.borrows
-      .put(`/completed/${borrowId}`, { vehicleId })
+      .put(`/completed/${borrowId}`, { vehicleId, latitude, longitude })
       .then(({data}) => data)
   }
 

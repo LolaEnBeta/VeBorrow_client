@@ -4,10 +4,10 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/Auth";
 
-function PrivateRoute({ component: Component, isLoggedIn, ...rest }) {
+function PrivateRoute({ component: Component, isLoggedIn, ...args }) {
   return (
     <Route
-      {...rest}
+      {...args}
       render={function(props) {
         if (isLoggedIn) return <Component {...props} />;
         else if (!isLoggedIn) return <Redirect to="/login" />;
