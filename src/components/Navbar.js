@@ -7,7 +7,7 @@ class Navbar extends Component {
     const { user, logout, isLoggedIn } = this.props;
 
     return (
-      <nav className="navbar">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to={"/"} id="home-btn">
           <h4>Home</h4>
         </Link>
