@@ -4,6 +4,7 @@ import vehicleService from './../lib/vehicle-service';
 export default class Vehicle extends Component {
   state = {
     available: "",
+    inUse: "",
     longitude: "",
     latitude: ""
   }
@@ -11,6 +12,7 @@ export default class Vehicle extends Component {
   componentDidMount() {
     this.setState({
       available: this.props.vehicle.available,
+      inUse: this.props.vehicle.inUse,
       longitude: this.props.vehicle.longitude,
       latitude: this.props.vehicle.latitude
     })
@@ -73,11 +75,24 @@ export default class Vehicle extends Component {
           <div className="card-body">
             <h5 className="card-title">{this.props.vehicle.type}</h5>
             <p className="card-text">...</p>
-            {!this.state.available && <button className="btn btn-primary" onClick={this.updateState}>Set available</button>}
-
-            {this.state.available && <button className="btn btn-primary" onClick={this.updateState}>Turn off</button>}
-
-            <button className="btn btn-danger" onClick={this.deleteVehicle}>Delete</button>
+            {
+              this.state.inUse ?
+              (
+                <p>Is in use...</p>
+              ): (
+                <div>
+                  {
+                    this.state.available ?
+                    (
+                      <button className="btn btn-primary" onClick={this.updateState}>Turn off</button>
+                    ) : (
+                      <button className="btn btn-primary" onClick={this.updateState}>Set available</button>
+                    )
+                  }
+                  <button className="btn btn-danger" onClick={this.deleteVehicle}>Delete</button>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
