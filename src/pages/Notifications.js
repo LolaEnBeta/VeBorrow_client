@@ -25,9 +25,20 @@ class Notifications extends Component {
       <div className="row vehicles-card">
         <div className="col s12 m6">
           <div className="card">
-            {this.state.borrows.map((borrow) => {
-              return <BorrowCard key={borrow._id} borrow={borrow} refreshPage={this.refresh}/>
-            })}
+            {
+              this.state.borrows.length === 0 ?
+              (
+                <div className="card-content brown-text">
+                  <span className="card-title">You don't have notifications yet...</span>
+                </div>
+              ): (
+                <div>
+                  {this.state.borrows.map((borrow) => {
+                    return <BorrowCard key={borrow._id} borrow={borrow} refreshPage={this.refresh}/>
+                  })}
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
