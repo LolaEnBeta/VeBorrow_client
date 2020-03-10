@@ -47,19 +47,27 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <h1>SEARCH</h1>
-
-        {
-          this.state.showInfo
-          &&
-          <div>
-            <VehicleInfo  vehicle={{type: this.state.type, ownerName: this.state.ownerName, ownerId: this.state.ownerId}}
-                          hide={this.hideInfo}
-                          borrow={this.borrowTheVehicle} />
+        <div className="row profile-card">
+          <div className="col s12 m6">
+            <div className="card">
+              <div className="card-content brown-text">
+                <span className="card-title">Search a vehicle</span>
+                {
+                  this.state.showInfo
+                  &&
+                  <div>
+                    <VehicleInfo  vehicle={{type: this.state.type, ownerName: this.state.ownerName, ownerId: this.state.ownerId}}
+                                  hide={this.hideInfo}
+                                  borrow={this.borrowTheVehicle} />
+                  </div>
+                }
+              </div>
+            </div>
           </div>
-        }
-
-        <MapContainer info={this.showInfo}/>
+        </div>
+        <div className="map">
+          <MapContainer info={this.showInfo}/>
+        </div>
       </div>
     )
   }

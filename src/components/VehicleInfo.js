@@ -53,26 +53,25 @@ class VehicleInfo extends Component {
             </div>
           ) : (
             <div>
-              <h3>Vehicle info</h3>
-                <p>Type of vehicle: {this.state.type}</p>
-                <p>Owner: {this.state.ownerName}</p>
-                {
-                  this.state.showMessageForm ?
-                  (
-                    <div>
-                      <label>How many time you need it mor or less?</label>
-                      <input type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
-                      <br></br>
-                      <button onClick={this.borrowIt}>Accept</button>
-                    </div>
-                  ) : (
-                    <button onClick={this.completeForm}>Borrow</button>
-                  )
-                }
+              <h5>{this.state.type}</h5>
+              <p>Owner: {this.state.ownerName}</p>
+              {
+                this.state.showMessageForm ?
+                (
+                  <div>
+                    <label>How many time you need it more or less?</label>
+                    <input type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
+                    <br></br>
+                    <button className="waves-effect waves-light btn" onClick={this.borrowIt}>Accept</button>
+                  </div>
+                ) : (
+                  <button className="waves-effect waves-light btn" onClick={this.completeForm}>Borrow</button>
+                )
+              }
             </div>
           )
         }
-        <button onClick={this.hideInfo}>Close info</button>
+        <button className="waves-effect waves-light btn" onClick={this.hideInfo}>Close info</button>
       </div>
     )
   }

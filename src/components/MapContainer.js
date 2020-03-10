@@ -3,8 +3,8 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import vehicleService from './../lib/vehicle-service';
 
 const mapStyles = {
-  width: '100%',
-  height: '100%'
+  width: '90vw',
+  height: '65vh'
 };
 
 export class MapContainer extends Component {
