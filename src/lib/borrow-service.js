@@ -3,7 +3,7 @@ import axios from "axios";
 class Borrow {
   constructor() {
     this.borrows = axios.create({
-      baseURL: "http://localhost:5000/borrow",
+      baseURL: `${process.env.REACT_APP_API_URL}/borrow`,
       withCredentials: true
     });
   }

@@ -3,7 +3,7 @@ import axios from "axios";
 class Vehicle {
   constructor() {
     this.vehicles = axios.create({
-      baseURL: "http://localhost:5000/vehicles",
+      baseURL: `${process.env.REACT_APP_API_URL}/vehicles`,
       withCredentials: true
     });
   }
