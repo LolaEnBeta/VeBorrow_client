@@ -74,7 +74,7 @@ a:hover {
   color:white !important;
 }
 
-.card-action button, .vehicle-buttons button{
+.card-action button, .vehicle-buttons button, .borrow button{
   padding-left: 10px;
   padding-right: 10px;
   margin: 5px;

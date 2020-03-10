@@ -62,16 +62,22 @@ class VehicleInfo extends Component {
                     <label>How many time you need it more or less?</label>
                     <input type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
                     <br></br>
-                    <button className="waves-effect waves-light btn" onClick={this.borrowIt}>Accept</button>
+                    <div className="borrow">
+                      <button className="waves-effect waves-light btn" onClick={this.hideInfo}><i className="fas fa-times"></i></button>
+                      <button className="waves-effect waves-light btn" onClick={this.borrowIt}>Accept</button>
+                    </div>
                   </div>
                 ) : (
-                  <button className="waves-effect waves-light btn" onClick={this.completeForm}>Borrow</button>
+                  <div className="borrow">
+                    <button className="waves-effect waves-light btn" onClick={this.hideInfo}><i className="fas fa-times"></i></button>
+                    <button className="waves-effect waves-light btn" onClick={this.completeForm}>Borrow</button>
+                  </div>
+
                 )
               }
             </div>
           )
         }
-        <button className="waves-effect waves-light btn" onClick={this.hideInfo}>Close info</button>
       </div>
     )
   }
