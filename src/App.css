@@ -74,7 +74,7 @@ a:hover {
   color:white !important;
 }
 
-.card-action, .vehicle-buttons button{
+.card-action button, .vehicle-buttons button{
   padding-left: 10px;
   padding-right: 10px;
   margin: 5px;

@@ -9,12 +9,16 @@ class IsRenterNotification extends Component {
   }
   render() {
     return (
-      <div>
-        <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
-        <p>Owner name: {this.props.borrow.ownerId["firstName"]}</p>
-        <p>Your message: {this.props.borrow.message}</p>
-        {
-          <div>
+
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card">
+            <div className="card-content brown-text">
+              <span className="card-title">{this.props.borrow.vehicleId['type']}</span>
+              <p className="brown-text">Owner name: {this.props.borrow.ownerId["firstName"]}</p>
+              <p className="brown-text">Your message: {this.props.borrow.message}</p>
+            </div>
+            <div className="card-action">
             {
               this.props.borrow.accepted ?
               (
@@ -22,9 +26,9 @@ class IsRenterNotification extends Component {
                   {
                     this.props.borrow.completed ?
                     (
-                      <p>Finished!!</p>
+                      <p className="brown-text">Finished!!</p>
                     ) : (
-                      <button onClick={this.completeBorrow}>Return</button>
+                      <button className="waves-effect waves-light btn-small" onClick={this.completeBorrow}>Return <i className="far fa-hand-point-right"></i></button>
                     )
                   }
                 </div>
@@ -33,17 +37,18 @@ class IsRenterNotification extends Component {
                   {
                     this.props.borrow.rejected ?
                     (
-                      <p>Rejected</p>
+                      <p className="brown-text">Rejected</p>
                     ) :(
-                      <p>Pending...</p>
+                      <p className="brown-text">Pending...</p>
                     )
                   }
 
                 </div>
               )
             }
+            </div>
           </div>
-        }
+        </div>
       </div>
     )
   }

@@ -84,12 +84,12 @@ export default class Vehicle extends Component {
                   {
                     this.state.available ?
                     (
-                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn OFF <i class="fas fa-toggle-off"></i></button>
+                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn OFF <i className="fas fa-toggle-off"></i></button>
                     ) : (
-                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn ON <i class="fas fa-toggle-on"></i></button>
+                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn ON <i className="fas fa-toggle-on"></i></button>
                     )
                   }
-                  <button className="waves-effect waves-light btn-small" onClick={this.deleteVehicle}>Delete</button>
+                  <button className="waves-effect waves-light btn-small" onClick={this.deleteVehicle}>Delete <i className="far fa-trash-alt"></i></button>
                 </div>
               )
             }

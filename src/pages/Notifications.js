@@ -22,11 +22,14 @@ class Notifications extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Notifications</h1>
-          {this.state.borrows.map((borrow) => {
-            return <BorrowCard key={borrow._id} borrow={borrow} refreshPage={this.refresh}/>
-          })}
+      <div className="row vehicles-card">
+        <div className="col s12 m6">
+          <div className="card">
+            {this.state.borrows.map((borrow) => {
+              return <BorrowCard key={borrow._id} borrow={borrow} refreshPage={this.refresh}/>
+            })}
+          </div>
+        </div>
       </div>
     )
   }

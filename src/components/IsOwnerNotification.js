@@ -16,39 +16,47 @@ class IsOwnerNotification extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Type: {this.props.borrow.vehicleId['type']}</h3>
-        <p>Renter name: {this.props.borrow.renterId["firstName"]}</p>
-        <p>Message: {this.props.borrow.message}</p>
-        {
-          this.props.borrow.accepted ?
-          (
-          <div>
-            {
-              this.props.borrow.completed ?
-              (
-                <p>Finished!!</p>
-              ) : (
-                <p>In use...</p>
-              )
-            }
-          </div>
-          ) : (
-            <div>
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card">
+            <div className="card-content brown-text">
+              <span className="card-title">{this.props.borrow.vehicleId['type']}</span>
+              <p className="brown-text">Renter name: {this.props.borrow.renterId["firstName"]}</p>
+              <p className="brown-text">Message: {this.props.borrow.message}</p>
+            </div>
+            <div className="card-action">
               {
-                this.props.borrow.rejected ?
+                this.props.borrow.accepted ?
                 (
-                  <p>Rejected</p>
-                ) : (
                 <div>
-                  <button onClick={this.acceptBorrow}>Accept</button>
-                  <button onClick={this.rejectBorrow}>Reject</button>
+                  {
+                    this.props.borrow.completed ?
+                    (
+                      <p className="brown-text">Finished!!</p>
+                    ) : (
+                      <p className="brown-text">In use...</p>
+                    )
+                  }
                 </div>
+                ) : (
+                  <div>
+                    {
+                      this.props.borrow.rejected ?
+                      (
+                        <p className="brown-text">Rejected</p>
+                      ) : (
+                      <div>
+                        <button className="waves-effect waves-light btn-small" onClick={this.acceptBorrow}>Accept <i className="far fa-check-square"></i></button>
+                        <button className="waves-effect waves-light btn-small" onClick={this.rejectBorrow}>Reject <i className="fas fa-ban"></i></button>
+                      </div>
+                      )
+                    }
+                  </div>
                 )
               }
             </div>
-          )
-        }
+          </div>
+        </div>
       </div>
     )
   }
