@@ -60,7 +60,6 @@ class Vehicles extends Component {
         <div className="col s12 m6">
           <div className="card">
             <button className="btn waves-effect waves-light" onClick={() => {this.setState({showForm: !this.state.showForm})}}> Create vehicle <i className="far fa-plus-square"></i></button>
-
               {
                 this.state.showForm &&
                 <div>
