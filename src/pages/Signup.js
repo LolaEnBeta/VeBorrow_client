@@ -40,6 +40,7 @@ class Signup extends Component {
                   placeholder="Firs name"
                   value={firstName}
                   onChange={this.handleChange}
+                  required
                 />
 
                 <input
@@ -48,6 +49,7 @@ class Signup extends Component {
                   placeholder="Last name"
                   value={lastName}
                   onChange={this.handleChange}
+                  required
                 />
                 <input
                   type="email"
@@ -55,14 +57,16 @@ class Signup extends Component {
                   placeholder="Email"
                   value={email}
                   onChange={this.handleChange}
+                  required
                 />
 
                 <input
-                  type="text"
+                  type="number"
                   name="phoneNumber"
                   placeholder="Phone number"
                   value={phoneNumber}
                   onChange={this.handleChange}
+                  required
                 />
 
                 <input
@@ -71,6 +75,7 @@ class Signup extends Component {
                   placeholder="Password"
                   value={password}
                   onChange={this.handleChange}
+                  required
                 />
 
                 <button className="btn waves-effect waves-light" type="submit" name="action">SIGNUP</button>

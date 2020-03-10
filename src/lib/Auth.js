@@ -62,7 +62,10 @@ class AuthProvider extends React.Component {
   logout = () => {
     authService
       .logout()
-      .then(() => this.setState({ isLoggedIn: false, user: null }))
+      .then(() => {
+        this.setState({ isLoggedIn: false, user: null });
+        this.props.history.push('/login');
+      })
       .catch(err => console.log(err));
   };
 
