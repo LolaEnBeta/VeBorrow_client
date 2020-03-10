@@ -69,3 +69,18 @@ a:hover {
 .btn {
   margin-top: 15px;
 }
+
+.color-white {
+  color:white !important;
+}
+
+.card-action button{
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 5px;
+}
+.profile-card {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: -20px;
+}

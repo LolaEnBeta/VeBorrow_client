@@ -47,10 +47,10 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">
+                <button className="btn waves-effect waves-light" type="submit" name="action">
                   LOGIN
                     {" "}
-                  <i class="fas fa-paper-plane"></i>
+                  <i className="fas fa-paper-plane"></i>
                 </button>
               </form>
             </div>

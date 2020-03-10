@@ -15,34 +15,34 @@ class Navbar extends Component {
                 <div className="loggedIn">
                   <li>
                     <Link to={"/"} id="home-btn">
-                      <i class="fas fa-home"></i>
+                      <i className="fas fa-home"></i>
                       {/* <img src='images/home.png' width="30"/> */}
                     </Link>
                   </li>
                   <li>
                     <Link to="/search">
-                    <i class="fas fa-search"></i>
+                    <i className="fas fa-search"></i>
                       {/* <img src="images/search.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/notifications">
-                    <i class="fas fa-envelope-open-text"></i>
+                    <i className="fas fa-envelope-open-text"></i>
                       {/* <img src="images/notifications.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/my-vehicles">
-                    <i class="fas fa-bicycle"></i>
+                    <i className="fas fa-bicycle"></i>
                       {/* <img src="images/vehicles.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/my-profile">
-                    <i class="far fa-user"></i>
+                    <i className="far fa-user"></i>
                       {/* <img src="images/profile.png" width="30" /> */}
                     </Link>
                   </li>
@@ -50,10 +50,10 @@ class Navbar extends Component {
               ) : (
                 <div className="loggedIn notLogged">
                   <li>
-                    <Link classname="logintext" to="/login">Login <i class="fas fa-sign-in-alt"></i></Link>
+                    <Link to="/login">Login <i className="fas fa-sign-in-alt"></i></Link>
                   </li>
                   <li>
-                    <Link to="/signup">Signup <i class="fas fa-user-plus"></i></Link>
+                    <Link to="/signup">Signup <i className="fas fa-user-plus"></i></Link>
                   </li>
                 </div>
               )

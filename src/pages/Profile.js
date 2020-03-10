@@ -31,19 +31,22 @@ class Profile extends Component {
   render() {
     const { logout } = this.props;
     return (
-      <div>
-        <h1>PROFILE</h1>
-        <h1>USER {this.state.firstName} {this.state.secondName}</h1>
-        <p>PhoneNumber {this.state.phoneNumber}</p>
-        <p>ID {this.props.user._id}</p>
-        <p>Email {this.props.user.email}</p>
-        {this.props.user.owner && <p>Is owner</p>}
-        {!this.props.user.owner && <p>Is not owner</p>}
-
-        <Link to="/edit-profile" >Edit</Link>
-        <button onClick={logout}>Logout</button>
-        <br></br>
-        <button onClick={this.deleteAccount}>Delete</button>
+      <div className="row profile-card">
+        <div className="col s12 m6">
+          <div className="card">
+            <div className="card-content brown-text">
+              <span className="card-title">Your Profile</span>
+              <h6> Name: <span>{this.state.firstName} {this.state.secondName}</span></h6> 
+              <h6> Email: <span>{this.props.user.email}</span></h6> 
+              <h6> Phone number: <span>{this.state.phoneNumber}</span></h6> 
+            </div>
+            <div className="card-action">
+            <button className="waves-effect waves-light btn"><Link className="color-white" to="/edit-profile" >Edit</Link></button>
+              <button className="waves-effect waves-light btn" onClick={logout}>Logout</button>
+              <button className="waves-effect waves-light btn" onClick={this.deleteAccount}>Delete</button>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
