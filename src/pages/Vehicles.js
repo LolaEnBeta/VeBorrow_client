@@ -8,15 +8,21 @@ import vehicleService from './../lib/vehicle-service';
 class Vehicles extends Component {
   state = {
     vehicles: [],
+    showForm: false,
+    type: ""
   }
 
   componentDidMount() {
-    vehicleService.getAllUserVehicles()
-      .then(res => {
-        const vehiclesList = res;
+    this.getAllVehicles();
+  }
 
-        this.setState({vehicles: vehiclesList});
-      })
+  getAllVehicles = () => {
+    vehicleService.getAllUserVehicles()
+    .then(res => {
+      const vehiclesList = res;
+
+      this.setState({vehicles: vehiclesList});
+    })
   }
 
   deleteVehicle = (vehicleId) => {
@@ -32,14 +38,72 @@ class Vehicles extends Component {
       .catch( (err) => console.log(err))
   }
 
+  createNewVehicle = (e) => {
+    e.preventDefault();
+
+    vehicleService.createVehicle(this.state.type)
+      .then(res => {
+        this.setState({type: "", showForm: false})
+        this.getAllVehicles();
+      })
+  }
+
+  handleChange = (e) => {
+    let value = document.querySelector('input[name="type"]:checked').value;
+
+    this.setState({type: value});
+  }
+
   render() {
     return (
-      <div>
-        {this.state.vehicles.map((vehicle) => {
-          return <Vehicle key={vehicle._id} vehicle={vehicle} delete={this.deleteVehicle}/>
-        })}
+      <div className="row vehicles-card">
+        <div className="col s12 m6">
+          <div className="card">
+            <button className="btn waves-effect waves-light" onClick={() => {this.setState({showForm: !this.state.showForm})}}> Create vehicle <i className="far fa-plus-square"></i></button>
 
-        <Link to="/create-vehicle" > Create one </Link>
+              {
+                this.state.showForm &&
+                <div>
+                <form onSubmit={this.createNewVehicle}>
+                  <p>
+                    <label>
+                      <input onChange={this.handleChange} name="type" value="Bike" type="radio" />
+                      <span>Bike</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input onChange={this.handleChange} name="type" value="Motorcycle" type="radio"  />
+                      <span>Motorcycle</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input onChange={this.handleChange} name="type" value="Scooter" type="radio"  />
+                      <span>Scooter</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input onChange={this.handleChange} name="type" value="Electric scooter" type="radio"  />
+                      <span>Electric Scooter</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input onChange={this.handleChange} name="type" value="Car" type="radio"  />
+                      <span>Car</span>
+                    </label>
+                  </p>
+                  <button className="btn waves-effect waves-light" type="submit">Add</button>
+                </form>
+              </div>
+            }
+            {this.state.vehicles.map((vehicle) => {
+              return <Vehicle key={vehicle._id} vehicle={vehicle} delete={this.deleteVehicle}/>
+            })}
+          </div>
+        </div>
       </div>
     )
   }

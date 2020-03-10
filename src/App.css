@@ -74,12 +74,12 @@ a:hover {
   color:white !important;
 }
 
-.card-action button{
+.card-action, .vehicle-buttons button{
   padding-left: 10px;
   padding-right: 10px;
   margin: 5px;
 }
-.profile-card {
+.profile-card, .vehicles-card {
   margin-top: 40px;
   margin-left: 20px;
   margin-right: -20px;

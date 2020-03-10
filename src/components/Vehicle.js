@@ -70,26 +70,26 @@ export default class Vehicle extends Component {
 
   render() {
     return (
-      <div className="col-sm-6">
-        <div className="card">
-          <div className="card-body">
-            <h5 className="card-title">{this.props.vehicle.type}</h5>
-            <p className="card-text">...</p>
-            {
+
+      <div className="row">
+        <div className="col s12 m5">
+          <div className="card-panel ">
+            <h5 className="brown-text">{this.props.vehicle.type}</h5>
+          {
               this.state.inUse ?
               (
-                <p>Is in use...</p>
+                <p className="brown-text">Is in use...</p>
               ): (
-                <div>
+                <div className="vehicle-buttons">
                   {
                     this.state.available ?
                     (
-                      <button className="btn btn-primary" onClick={this.updateState}>Turn off</button>
+                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn OFF <i class="fas fa-toggle-off"></i></button>
                     ) : (
-                      <button className="btn btn-primary" onClick={this.updateState}>Set available</button>
+                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn ON <i class="fas fa-toggle-on"></i></button>
                     )
                   }
-                  <button className="btn btn-danger" onClick={this.deleteVehicle}>Delete</button>
+                  <button className="waves-effect waves-light btn-small" onClick={this.deleteVehicle}>Delete</button>
                 </div>
               )
             }
