@@ -23,7 +23,6 @@ class Login extends Component {
     const { email, password } = this.state;
 
     return (
-
       <div className="row login-page">
         <div className="col s12 m7">
           <div className="card">
@@ -48,7 +47,11 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">LOGIN</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                  LOGIN
+                    {" "}
+                  <i class="fas fa-paper-plane"></i>
+                </button>
               </form>
             </div>
           </div>

@@ -29,6 +29,7 @@ class Profile extends Component {
   }
 
   render() {
+    const { logout } = this.props;
     return (
       <div>
         <h1>PROFILE</h1>
@@ -40,6 +41,7 @@ class Profile extends Component {
         {!this.props.user.owner && <p>Is not owner</p>}
 
         <Link to="/edit-profile" >Edit</Link>
+        <button onClick={logout}>Logout</button>
         <br></br>
         <button onClick={this.deleteAccount}>Delete</button>
       </div>

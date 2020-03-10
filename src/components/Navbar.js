@@ -15,40 +15,45 @@ class Navbar extends Component {
                 <div className="loggedIn">
                   <li>
                     <Link to={"/"} id="home-btn">
-                      <img src='images/home.png' width="30"/>
+                      <i class="fas fa-home"></i>
+                      {/* <img src='images/home.png' width="30"/> */}
                     </Link>
                   </li>
                   <li>
                     <Link to="/search">
-                      <img src="images/search.png" width="30" />
+                    <i class="fas fa-search"></i>
+                      {/* <img src="images/search.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/notifications">
-                      <img src="images/notifications.png" width="30" />
+                    <i class="fas fa-envelope-open-text"></i>
+                      {/* <img src="images/notifications.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/my-vehicles">
-                      <img src="images/vehicles.png" width="30" />
+                    <i class="fas fa-bicycle"></i>
+                      {/* <img src="images/vehicles.png" width="30" /> */}
                     </Link>
                   </li>
 
                   <li>
                     <Link to="/my-profile">
-                      <img src="images/profile.png" width="30" />
+                    <i class="far fa-user"></i>
+                      {/* <img src="images/profile.png" width="30" /> */}
                     </Link>
                   </li>
                 </div>
               ) : (
                 <div className="loggedIn notLogged">
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link classname="logintext" to="/login">Login <i class="fas fa-sign-in-alt"></i></Link>
                   </li>
                   <li>
-                    <Link to="/signup">Signup</Link>
+                    <Link to="/signup">Signup <i class="fas fa-user-plus"></i></Link>
                   </li>
                 </div>
               )
