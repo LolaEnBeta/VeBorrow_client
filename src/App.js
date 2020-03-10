@@ -15,7 +15,6 @@ import Notifications from "./pages/Notifications";
 
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import CreateVehicleForm from "./pages/CreateVehicleForm";
 
 class App extends Component {
   render() {
@@ -33,7 +32,6 @@ class App extends Component {
           <PrivateRoute exact path="/my-profile" component={Profile} />
           <PrivateRoute exact path="/edit-profile" component={EditProfileForm} />
           <PrivateRoute exact path="/my-vehicles" component={Vehicles} />
-          <PrivateRoute exact path="/create-vehicle" component={CreateVehicleForm} />
           <PrivateRoute exact path="/search" component={Search} />
           <PrivateRoute exact path="/notifications" component={Notifications} />
         </Switch>
