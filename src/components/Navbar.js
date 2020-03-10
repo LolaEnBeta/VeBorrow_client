@@ -7,33 +7,54 @@ class Navbar extends Component {
     const { user, logout, isLoggedIn } = this.props;
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to={"/"} id="home-btn">
-          <h4>Home</h4>
-        </Link>
-        {isLoggedIn ? (
-          <>
-            <p>username: {user.firstName}</p>
-            <button onClick={logout}>Logout</button>
-            <Link to="/my-profile">Profile</Link>
-            <Link to="/my-vehicles">Vehicles</Link>
-            <Link to="/search">Search</Link>
-            <Link to="/notifications">Notifications</Link>
-            <Link to="/create-vehicle">Create vehicle</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/login">
-              {" "}
-              <button className="navbar-button">Login</button>{" "}
-            </Link>
-            <br />
-            <Link to="/signup">
-              {" "}
-              <button className="navbar-button">Sign Up</button>{" "}
-            </Link>
-          </>
-        )}
+      <nav>
+        <div className="nav-wrapper">
+          <ul id="nav-mobile" >
+            {isLoggedIn ?
+              (
+                <div className="loggedIn">
+                  <li>
+                    <Link to={"/"} id="home-btn">
+                      <img src='images/home.png' width="30"/>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/search">
+                      <img src="images/search.png" width="30" />
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/notifications">
+                      <img src="images/notifications.png" width="30" />
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/my-vehicles">
+                      <img src="images/vehicles.png" width="30" />
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/my-profile">
+                      <img src="images/profile.png" width="30" />
+                    </Link>
+                  </li>
+                </div>
+              ) : (
+                <div className="loggedIn notLogged">
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">Signup</Link>
+                  </li>
+                </div>
+              )
+            }
+          </ul>
+        </div>
       </nav>
     );
   }
