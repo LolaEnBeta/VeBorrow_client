@@ -14,7 +14,6 @@ class Profile extends Component {
   componentDidMount() {
     userService.getUser(this.props.user._id)
       .then((user) => {
-        console.log(user)
         this.setState({
           firstName: user.firstName,
           lastName: user.lastName,

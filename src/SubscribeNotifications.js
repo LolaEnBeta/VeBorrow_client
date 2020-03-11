@@ -31,7 +31,7 @@ export default class SubscribeNotifications {
 
       // Send Push notification
       console.log("Sending Push...");
-      await fetch(`http://localhost:5000/subscribe/${userId}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/subscribe/${userId}`, {
         method: "POST",
         body: JSON.stringify(subscription),
         headers: {
