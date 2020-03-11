@@ -6,9 +6,9 @@ import authService from './../lib/auth-service';
 
 class EditProfileForm extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    phoneNumber: ""
+    firstName: this.props.user.firstName,
+    lastName: this.props.user.lastName,
+    phoneNumber: this.props.user.phoneNumber
   }
 
   componentDidMount() {
@@ -20,7 +20,7 @@ class EditProfileForm extends Component {
       .catch((error) => console.log(error));
   }
 
-  handleSubmit = (e) => {
+  handleFormSubmit = (e) => {
     e.preventDefault();
 
     const {firstName, lastName, phoneNumber} = this.state

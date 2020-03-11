@@ -8,6 +8,12 @@ class User {
     });
   }
 
+  getUser(userId) {
+    return this.user
+      .get(`/${userId}`)
+      .then(({data}) => data)
+  }
+
   deleteUser(userId) {
     return this.user
       .delete(`/${userId}`, {})
@@ -16,7 +22,7 @@ class User {
 
   updateUser(userId, firstName, lastName, phoneNumber) {
     return this.user
-      .post(`/${userId}`, {firstName, lastName, phoneNumber})
+      .put(`/${userId}`, {firstName, lastName, phoneNumber})
       .then(({data}) => data)
   }
 }
