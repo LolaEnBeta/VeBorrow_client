@@ -59,45 +59,53 @@ class Vehicles extends Component {
       <div className="row vehicles-card">
         <div className="col s12 m6">
           <div className="card">
-            <button className="btn waves-effect waves-light" onClick={() => {this.setState({showForm: !this.state.showForm})}}> Create vehicle <i className="far fa-plus-square"></i></button>
+            {
+              this.state.showForm ?
+              (
+                <button className="btn waves-effect waves-light create-vehicle" onClick={() => {this.setState({showForm: !this.state.showForm})}}>Hide form <i className="fas fa-arrow-up"></i></button>
+              ): (
+                <button className="btn waves-effect waves-light create-vehicle" onClick={() => {this.setState({showForm: !this.state.showForm})}}> Create vehicle <i className="far fa-plus-square"></i></button>
+              )
+            }
               {
                 this.state.showForm &&
-                <div>
+                <div className="create-vehicle-form">
                 <form onSubmit={this.createNewVehicle}>
                   <p>
-                    <label>
+                    <label className="select-radio">
                       <input onChange={this.handleChange} name="type" value="Bike" type="radio" />
                       <span>Bike</span>
                     </label>
                   </p>
                   <p>
-                    <label>
+                    <label className="select-radio">
                       <input onChange={this.handleChange} name="type" value="Motorcycle" type="radio"  />
                       <span>Motorcycle</span>
                     </label>
                   </p>
                   <p>
-                    <label>
+                    <label className="select-radio">
                       <input onChange={this.handleChange} name="type" value="Scooter" type="radio"  />
                       <span>Scooter</span>
                     </label>
                   </p>
                   <p>
-                    <label>
+                    <label className="select-radio">
                       <input onChange={this.handleChange} name="type" value="Electric scooter" type="radio"  />
                       <span>Electric Scooter</span>
                     </label>
                   </p>
                   <p>
-                    <label>
+                    <label className="select-radio">
                       <input onChange={this.handleChange} name="type" value="Car" type="radio"  />
                       <span>Car</span>
                     </label>
                   </p>
-                  <button className="btn waves-effect waves-light" type="submit">Add</button>
+                  <button className="btn waves-effect waves-light create-vehicle add-btn" type="submit">Add</button>
                 </form>
               </div>
             }
+            <h4 className="brown-text select-radio">Your vehicles</h4>
             {this.state.vehicles.map((vehicle) => {
               return <Vehicle key={vehicle._id} vehicle={vehicle} delete={this.deleteVehicle}/>
             })}

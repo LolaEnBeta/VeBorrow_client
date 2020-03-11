@@ -71,7 +71,7 @@ export default class Vehicle extends Component {
   render() {
     return (
 
-      <div className="row">
+      <div className="row vehicle-info">
         <div className="col s12 m5">
           <div className="card-panel ">
             <h5 className="brown-text">{this.props.vehicle.type}</h5>

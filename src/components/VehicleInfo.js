@@ -50,6 +50,7 @@ class VehicleInfo extends Component {
             <div>
               <h3>Your vehicle</h3>
               <p>Type of vehicle: {this.state.type}</p>
+              <button className="waves-effect waves-light btn" onClick={this.hideInfo}><i className="fas fa-times"></i></button>
             </div>
           ) : (
             <div>

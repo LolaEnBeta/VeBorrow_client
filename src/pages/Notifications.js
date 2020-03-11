@@ -24,7 +24,7 @@ class Notifications extends Component {
     return (
       <div className="row vehicles-card">
         <div className="col s12 m6">
-          <div className="card">
+          <div>
             {
               this.state.borrows.length === 0 ?
               (

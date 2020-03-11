@@ -10,7 +10,7 @@ class IsRenterNotification extends Component {
   render() {
     return (
 
-      <div className="row">
+      <div className="row borrow-info">
         <div className="col s12 m6">
           <div className="card">
             <div className="card-content brown-text">
@@ -42,7 +42,6 @@ class IsRenterNotification extends Component {
                       <p className="brown-text">Pending...</p>
                     )
                   }
-
                 </div>
               )
             }
