@@ -1,8 +1,7 @@
 export default class SubscribeNotifications {
 
   initialize() {
-    const publicVapidKey =
-      "BEwx8BZrdoV5Nm6mryR1LgDcvs_xsYgTQ81YYHDLHo-WbZAzZU8O4-nSDZnlhTEX0Z3pe1adWjTA-z-FJAr9epc";
+    const publicVapidKey = process.env.REACT_APP_PUBLIC_VAPED_KEY;
 
     //Check for service worker
     if ("serviceWorker" in navigator) {
