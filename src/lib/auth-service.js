@@ -1,4 +1,5 @@
 import axios from "axios";
+import SubscribeNotifications from "../SubscribeNotifications";
 
 class Auth {
   constructor() {
@@ -11,13 +12,21 @@ class Auth {
   signup({ firstName, lastName, email, phoneNumber, password }) {
     return this.auth
       .post("/auth/signup", { firstName, lastName, email, phoneNumber, password })
-      .then(({ data }) => data);
+      .then(({ data }) => {
+        let subscribeNotifications = new SubscribeNotifications();
+        subscribeNotifications.initialize(data._id);
+        return data
+      });
   }
 
   login({ email, password }) {
     return this.auth
       .post("/auth/login", { email, password })
-      .then(({ data }) => data);
+      .then(({ data }) => {
+        let subscribeNotifications = new SubscribeNotifications();
+        subscribeNotifications.initialize(data._id);
+        return data;
+      })
   }
 
   logout() {

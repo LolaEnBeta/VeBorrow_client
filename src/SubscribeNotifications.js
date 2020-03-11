@@ -1,6 +1,6 @@
 export default class SubscribeNotifications {
 
-  initialize() {
+  initialize(userId) {
     const publicVapidKey = process.env.REACT_APP_PUBLIC_VAPED_KEY;
 
     //Check for service worker
@@ -31,7 +31,7 @@ export default class SubscribeNotifications {
 
       // Send Push notification
       console.log("Sending Push...");
-      await fetch("http://localhost:5000/subscribe", {
+      await fetch(`http://localhost:5000/subscribe/${userId}`, {
         method: "POST",
         body: JSON.stringify(subscription),
         headers: {
