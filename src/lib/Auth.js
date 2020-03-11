@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import authService from "./auth-service"; // IMPORT functions for axios requests to API
+import userService from "./user-service"; // IMPORT functions for axios requests to API
 const { Consumer, Provider } = React.createContext();
 
 // HOC to create a Consumer
@@ -8,12 +9,13 @@ const withAuth = WrappedComponent => {
     render() {
       return (
         <Consumer>
-          {({ login, signup, logout, user, isLoggedIn }) => {
+          {({ login, signup, logout, user, isLoggedIn, deleteUserAndLogout }) => {
             return (
               <WrappedComponent
                 user={user}
                 isLoggedIn={isLoggedIn}
                 login={login}
+                deleteUserAndLogout={deleteUserAndLogout}
                 signup={signup}
                 logout={logout}
                 {...this.props}
@@ -69,12 +71,22 @@ class AuthProvider extends React.Component {
       .catch(err => console.log(err));
   };
 
+  deleteUserAndLogout = () => {
+    userService
+      .deleteUser(this.state.user._id)
+      .then(() => {
+        this.setState({ isLoggedIn: false, user: null });
+        this.props.history.push('/login');
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     const { isLoading, isLoggedIn, user } = this.state;
-    const { login, logout, signup } = this;
+    const { login, logout, signup, deleteUserAndLogout } = this;
 
     return (
-      <Provider value={{ isLoading, isLoggedIn, user, login, logout, signup }}>
+      <Provider value={{ isLoading, isLoggedIn, user, login, logout, signup, deleteUserAndLogout }}>
         {this.props.children}
       </Provider>
     );

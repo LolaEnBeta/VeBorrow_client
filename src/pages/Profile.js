@@ -23,9 +23,7 @@ class Profile extends Component {
   }
 
   deleteAccount = () => {
-    userService.deleteUser(this.props.user._id)
-      .then( () => this.props.history.push('/login'))
-      .catch( (err) => console.log(err));
+    this.props.deleteUserAndLogout();
   }
 
   render() {
