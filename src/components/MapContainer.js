@@ -9,8 +9,8 @@ const mapStyles = {
 
 export class MapContainer extends Component {
   state = {
-    latitude:  41.4304006,
-    longitude: 2.1941694,
+    latitude:  41.397618,
+    longitude: 2.190161,
     availableVehicles: []
   }
 
