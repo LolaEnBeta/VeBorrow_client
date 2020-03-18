@@ -19,10 +19,10 @@ import PrivateRoute from "./components/PrivateRoute";
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <Navbar />
 
-        <Switch>
+        <Switch className="container">
           <Route exact path="/" component={Home} />
 
           <AnonRoute exact path="/signup" component={Signup} />
