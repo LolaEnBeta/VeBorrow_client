@@ -11,14 +11,12 @@ class VehicleFormRedux extends Component {
     e.preventDefault();
 
     const {type} = this.state;
-    console.log(this.props);
 
     this.props.addVehicle(type);
   }
 
   handleChange = (e) => {
     let value = document.querySelector('input[name="type"]:checked').value;
-    console.log(value);
 
     this.setState({type: value});
   }

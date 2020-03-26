@@ -1,4 +1,6 @@
-import { ADD_VEHICLE } from './actions';
+import { ADD_VEHICLE, DELETE_VEHICLE } from './actions';
+
+let counterId = 2;
 
 const initialVehiclesState = {
   userVehicles: [
@@ -16,7 +18,11 @@ const initialVehiclesState = {
 function reducer(state = initialVehiclesState, action) {
   switch(action.type) {
     case ADD_VEHICLE:
-      return { userVehicles: [...state.userVehicles, { vType: action.vType, id: state.userVehicles.length +1 }]};
+      counterId += 1;
+      return { userVehicles: [...state.userVehicles, { vType: action.vType, id: counterId }]};
+    case DELETE_VEHICLE:
+      let newList = state.userVehicles.filter((vehicle) => vehicle.id !== action.id);
+      return { userVehicles: newList};
     default:
       return state;
 

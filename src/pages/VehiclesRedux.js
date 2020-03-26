@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import VehicleFormRedux from '../components/VehicleFormRedux';
-import Vehicle from '../components/Vehicle';
 import VehicleRedux from '../components/VehicleRedux';
 
 class VehiclesRedux extends Component {
