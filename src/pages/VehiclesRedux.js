@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import VehicleFormRedux from '../components/VehicleFormRedux';
 import VehicleRedux from '../components/VehicleRedux';
+import { getAllVehicles } from '../actions/actions';
+
 
 class VehiclesRedux extends Component {
   state = {
     showForm: false
+  }
+
+  componentDidMount() {
+    this.props.getAllVehicles();
   }
 
   hideForm = () => {
@@ -44,4 +50,4 @@ const mapStateToProps = (state) => {
   return {vehicles: state.userVehicles}
 }
 
-export default connect(mapStateToProps)(VehiclesRedux);
+export default connect(mapStateToProps, { getAllVehicles })(VehiclesRedux);

@@ -38,6 +38,20 @@ function errorHasOccurred(message) {
   }
 }
 
+export function getAllVehicles() {
+  return function(dispatch) {
+    //dispatch(request())
+    return vehicleService.getAllUserVehicles()
+      .then(response => {
+        if (response >= 400) {
+          return dispatch(errorHasOccurred("Bad response from server"));
+        }
+        return dispatch(receiveAllVehicles(response));
+      })
+
+  }
+}
+
 export function addVehicle(vType) {
   return function (dispatch) {
     dispatch(request())

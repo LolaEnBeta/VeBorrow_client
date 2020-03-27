@@ -8,6 +8,9 @@ const initialVehiclesState = {
 
 function reducer(state = initialVehiclesState, action) {
   switch(action.type) {
+    case SHOW_ALL_VEHICLES:
+      const allVehicles = action.payload.vehicles;
+      return { userVehicles: [...state.userVehicles, ...allVehicles]};
     case ADD_VEHICLE:
       let newVehicles = action.payload.vehicles;
       return { userVehicles: [...state.userVehicles, ...newVehicles]};
