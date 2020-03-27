@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deleteVehicle } from '../actions';
+import { deleteVehicle } from '../actions/actions';
 import { connect } from 'react-redux';
 
 class VehicleRedux extends Component {

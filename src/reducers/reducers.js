@@ -1,4 +1,4 @@
-import { ADD_VEHICLE, DELETE_VEHICLE } from './actions';
+import { ADD_VEHICLE, DELETE_VEHICLE } from '../actions/actions';
 
 let counterId = 2;
 
