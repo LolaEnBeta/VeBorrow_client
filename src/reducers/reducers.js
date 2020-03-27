@@ -1,7 +1,5 @@
 import { SHOW_ALL_VEHICLES, DELETE_VEHICLE, ADD_VEHICLE } from '../actions/actions';
 
-let counterId = 2;
-
 const initialVehiclesState = {
   userVehicles: []
 }
@@ -11,15 +9,18 @@ function reducer(state = initialVehiclesState, action) {
     case SHOW_ALL_VEHICLES:
       const allVehicles = action.payload.vehicles;
       return { userVehicles: [...state.userVehicles, ...allVehicles]};
+
     case ADD_VEHICLE:
-      let newVehicles = action.payload.vehicles;
-      return { userVehicles: [...state.userVehicles, ...newVehicles]};
+      let newVehicle = action.payload.vehicle;
+      return { userVehicles: [...state.userVehicles, newVehicle]};
+
     case DELETE_VEHICLE:
-      let newList = state.userVehicles.filter((vehicle) => vehicle.id !== action.id);
+      const vehicleToDelete = action.payload.vehicle;
+      let newList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleToDelete._id);
       return { userVehicles: newList};
+
     default:
       return state;
-
   }
 }
 

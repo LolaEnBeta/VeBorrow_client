@@ -20,11 +20,20 @@ function request() {
   return { type: REQUEST }
 }
 
-function receiveVehicle(vehicles) {
+function addNewVehicle(vehicle) {
   return {
     type: ADD_VEHICLE,
     payload: {
-      vehicles
+      vehicle
+    }
+  }
+}
+
+function deleteVehicle(vehicle) {
+  return {
+    type: DELETE_VEHICLE,
+    payload: {
+      vehicle
     }
   }
 }
@@ -62,13 +71,20 @@ export function addVehicle(vType) {
         }
         return response;
       })
-      .then(() => {
-        vehicleService.getAllUserVehicles()
-          .then((data) => dispatch(receiveVehicle(data)))
-      });
+      .then((vehicle) => dispatch(addNewVehicle(vehicle)));
   }
 }
 
-export function deleteVehicle(id) {
-  return {type: DELETE_VEHICLE, id: id}
+export function deleteVehicleById(id) {
+  return function(dispatch) {
+    //dispatch(request())
+    return vehicleService.deleteOneVehicle(id)
+      .then(response => {
+        if (response >= 400) {
+          dispatch(errorHasOccurred());
+        }
+        return response;
+      })
+      .then((vehicleToDelete) => dispatch(deleteVehicle(vehicleToDelete)));
+  }
 }

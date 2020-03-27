@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deleteVehicle } from '../actions/actions';
+import { deleteVehicleById } from '../actions/actions';
 import { connect } from 'react-redux';
 
 class VehicleRedux extends Component {
@@ -23,7 +23,7 @@ class VehicleRedux extends Component {
                       <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn ON <i className="fas fa-toggle-on"></i></button>
                     )
                   }
-                  <button className="waves-effect waves-light btn-small" onClick={this.deleteVehicle}>Delete <i className="far fa-trash-alt"></i></button>
+                  <button className="waves-effect waves-light btn-small" onClick={() => this.props.deleteVehicleById(this.props.vehicle._id)}>Delete <i className="far fa-trash-alt"></i></button>
                 </div>
               )
             }
@@ -34,4 +34,4 @@ class VehicleRedux extends Component {
   }
 }
 
-export default connect(null, {deleteVehicle: deleteVehicle})(VehicleRedux);
+export default connect(null, { deleteVehicleById })(VehicleRedux);
