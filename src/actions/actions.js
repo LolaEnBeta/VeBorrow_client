@@ -4,6 +4,7 @@ export const ADD_VEHICLE = 'ADD_VEHICLE';
 export const DELETE_VEHICLE = 'DELETE_VEHICLE';
 export const SHOW_ALL_VEHICLES = 'SHOW_ALL_VEHICLES';
 export const TURN_VEHICLE_ON = 'TURN_VEHICLE_ON';
+export const TURN_VEHICLE_OFF = 'TURN_VEHICLE_OFF';
 
 export const REQUEST = 'REQUEST';
 export const FAILURE = 'FAILURE';
@@ -42,6 +43,15 @@ function deleteVehicle(vehicle) {
 function turnOn(vehicle) {
   return {
     type: TURN_VEHICLE_ON,
+    payload: {
+      vehicle
+    }
+  }
+}
+
+function turnOff(vehicle) {
+  return {
+    type: TURN_VEHICLE_OFF,
     payload: {
       vehicle
     }
@@ -112,5 +122,16 @@ export function turnVehicleOn(id) {
       return vehicleService.turnOnVehicle(id, available, latitude, longitude)
         .then(vehicle => dispatch(turnOn(vehicle)));
     });
+  }
+}
+
+export function turnVehicleOff(id) {
+  return function(dispatch) {
+    const latitude = null;
+    const longitude = null;
+    const available = false;
+
+    return vehicleService.turnOffVehicle(id, available, latitude, longitude)
+      .then(vehicle => dispatch(turnOff(vehicle)))
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deleteVehicleById, turnVehicleOn } from '../actions/actions';
+import { deleteVehicleById, turnVehicleOn, turnVehicleOff } from '../actions/actions';
 import { connect } from 'react-redux';
 
 class VehicleRedux extends Component {
@@ -18,7 +18,7 @@ class VehicleRedux extends Component {
                   {
                     this.props.vehicle.available ?
                     (
-                      <button className="waves-effect waves-light btn-small" onClick={this.updateState}>Turn OFF <i className="fas fa-toggle-off"></i></button>
+                      <button className="waves-effect waves-light btn-small" onClick={() => this.props.turnVehicleOff(this.props.vehicle._id)}>Turn OFF <i className="fas fa-toggle-off"></i></button>
                     ) : (
                       <button className="waves-effect waves-light btn-small" onClick={() => this.props.turnVehicleOn(this.props.vehicle._id)}>Turn ON <i className="fas fa-toggle-on"></i></button>
                     )
@@ -34,4 +34,4 @@ class VehicleRedux extends Component {
   }
 }
 
-export default connect(null, { deleteVehicleById, turnVehicleOn })(VehicleRedux);
+export default connect(null, { deleteVehicleById, turnVehicleOn, turnVehicleOff })(VehicleRedux);

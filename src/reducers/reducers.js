@@ -1,4 +1,4 @@
-import { SHOW_ALL_VEHICLES, DELETE_VEHICLE, ADD_VEHICLE, TURN_VEHICLE_ON } from '../actions/actions';
+import { SHOW_ALL_VEHICLES, DELETE_VEHICLE, ADD_VEHICLE, TURN_VEHICLE_ON, TURN_VEHICLE_OFF } from '../actions/actions';
 
 const initialVehiclesState = {
   userVehicles: []
@@ -20,9 +20,14 @@ function reducer(state = initialVehiclesState, action) {
       return { userVehicles: newList};
 
     case TURN_VEHICLE_ON:
-      const vehicleUpdated = action.payload.vehicle;
-      let updatedList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleUpdated._id);
-      return {userVehicles: [...updatedList, vehicleUpdated]}
+      const vehicleOn = action.payload.vehicle;
+      let withOnList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleOn._id);
+      return {userVehicles: [...withOnList, vehicleOn]};
+
+    case TURN_VEHICLE_OFF:
+        const vehicleOff = action.payload.vehicle;
+        let withOffList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleOff._id);
+        return {userVehicles: [...withOffList, vehicleOff]};
 
     default:
       return state;
