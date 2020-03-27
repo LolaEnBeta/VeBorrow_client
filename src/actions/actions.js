@@ -3,6 +3,7 @@ import vehicleService from './../lib/vehicle-service';
 export const ADD_VEHICLE = 'ADD_VEHICLE';
 export const DELETE_VEHICLE = 'DELETE_VEHICLE';
 export const SHOW_ALL_VEHICLES = 'SHOW_ALL_VEHICLES';
+export const TURN_VEHICLE_ON = 'TURN_VEHICLE_ON';
 
 export const REQUEST = 'REQUEST';
 export const FAILURE = 'FAILURE';
@@ -32,6 +33,15 @@ function addNewVehicle(vehicle) {
 function deleteVehicle(vehicle) {
   return {
     type: DELETE_VEHICLE,
+    payload: {
+      vehicle
+    }
+  }
+}
+
+function turnOn(vehicle) {
+  return {
+    type: TURN_VEHICLE_ON,
     payload: {
       vehicle
     }
@@ -86,5 +96,21 @@ export function deleteVehicleById(id) {
         return response;
       })
       .then((vehicleToDelete) => dispatch(deleteVehicle(vehicleToDelete)));
+  }
+}
+
+export function turnVehicleOn(id) {
+  return function(dispatch) {
+    let latitude = "";
+    let longitude = "";
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      const available = true;
+
+      return vehicleService.turnOnVehicle(id, available, latitude, longitude)
+        .then(vehicle => dispatch(turnOn(vehicle)));
+    });
   }
 }

@@ -32,7 +32,13 @@ class Vehicle {
       .then(({data}) => data);
   }
 
-  updateVehicle(vehicleId, available, latitude, longitude) {
+  turnOffVehicle(vehicleId, available, latitude, longitude) {
+    return this.vehicles
+      .put(`/${vehicleId}`, {available, latitude, longitude})
+      .then(({data}) => data);
+  }
+
+  turnOnVehicle(vehicleId, available, latitude, longitude) {
     return this.vehicles
       .put(`/${vehicleId}`, {available, latitude, longitude})
       .then(({data}) => data);
