@@ -13,6 +13,7 @@ class VehicleFormRedux extends Component {
     const {type} = this.state;
 
     this.props.addVehicle(type);
+    this.props.hide();
   }
 
   handleChange = (e) => {

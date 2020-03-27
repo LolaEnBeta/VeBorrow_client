@@ -7,6 +7,11 @@ class VehiclesRedux extends Component {
   state = {
     showForm: false
   }
+
+  hideForm = () => {
+    this.setState({showForm: false})
+  }
+
   render() {
     return (
       <div className="row vehicles-card">
@@ -22,11 +27,11 @@ class VehiclesRedux extends Component {
             }
               {
                 this.state.showForm &&
-                <VehicleFormRedux />
+                <VehicleFormRedux hide={this.hideForm}/>
             }
             <h4 className="brown-text select-radio">Your vehicles</h4>
             {this.props.vehicles.map((vehicle) => {
-              return <VehicleRedux key={vehicle.id} vehicle={vehicle} />
+              return <VehicleRedux key={vehicle._id} vehicle={vehicle} />
             })}
           </div>
         </div>
