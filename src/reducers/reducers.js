@@ -21,13 +21,25 @@ function reducer(state = initialVehiclesState, action) {
 
     case TURN_VEHICLE_ON:
       const vehicleOn = action.payload.vehicle;
-      let withOnList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleOn._id);
-      return {userVehicles: [...withOnList, vehicleOn]};
+      let withOnList = state.userVehicles.map((vehicle) => {
+        if (vehicle._id === vehicleOn._id) {
+          vehicle = vehicleOn;
+        }
+        return vehicle;
+      });
+
+      return {userVehicles: [...withOnList]};
 
     case TURN_VEHICLE_OFF:
         const vehicleOff = action.payload.vehicle;
-        let withOffList = state.userVehicles.filter((vehicle) => vehicle._id !== vehicleOff._id);
-        return {userVehicles: [...withOffList, vehicleOff]};
+        let withOffList = state.userVehicles.map((vehicle) => {
+          if (vehicle._id === vehicleOff._id) {
+            vehicle = vehicleOff;
+          }
+          return vehicle;
+        });
+
+        return {userVehicles: [...withOffList]};
 
     default:
       return state;
